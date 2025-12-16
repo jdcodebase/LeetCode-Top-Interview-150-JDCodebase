@@ -14,14 +14,13 @@
 // Time Complexity: O((m + n) log (m + n))
 // Space Complexity: O(1) (ignoring sort internals)
 
-var mergeBruteForce = function(nums1, m, nums2, n) {
-    for (let i = 0; i < n; i++) {
-        nums1[m + i] = nums2[i];
-    }
+var mergeBruteForce = function (nums1, m, nums2, n) {
+  for (let i = 0; i < n; i++) {
+    nums1[m + i] = nums2[i];
+  }
 
-    nums1.sort((a, b) => a - b);
+  nums1.sort((a, b) => a - b);
 };
-
 
 // --------------------------------------------------
 // Optimal Solution (Two Pointers - Reverse Merge)
@@ -32,21 +31,21 @@ var mergeBruteForce = function(nums1, m, nums2, n) {
 // Time Complexity: O(m + n)
 // Space Complexity: O(1)
 
-var mergeOptimal = function(nums1, m, nums2, n) {
-    let i = m - 1;        // pointer for nums1 valid elements
-    let j = n - 1;        // pointer for nums2
-    let k = m + n - 1;    // pointer for nums1 end
+var mergeOptimal = function (nums1, m, nums2, n) {
+  let i = m - 1; // pointer for nums1 valid elements
+  let j = n - 1; // pointer for nums2
+  let k = m + n - 1; // pointer for nums1 end
 
-    while (j >= 0) {
-        if (i >= 0 && nums1[i] > nums2[j]) {
-            nums1[k] = nums1[i];
-            i--;
-        } else {
-            nums1[k] = nums2[j];
-            j--;
-        }
-        k--;
+  while (j >= 0) {
+    if (i >= 0 && nums1[i] > nums2[j]) {
+      nums1[k] = nums1[i];
+      i--;
+    } else {
+      nums1[k] = nums2[j];
+      j--;
     }
+    k--;
+  }
 };
 
 /*
