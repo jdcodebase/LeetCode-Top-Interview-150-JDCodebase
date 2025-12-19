@@ -8,7 +8,6 @@ This file contains ALL 4 solution approaches:
 1) Brute Force (Extra Space)
 2) Set Method (Built-in)
 3) Two Pointers – Overwrite Method
-4) Two Pointers – Index Tracking (Optimal ⭐)
 --------------------------------------------------
 */
 
@@ -91,34 +90,6 @@ function removeDuplicatesTwoPointersOverwrite(nums) {
   }
 
   return index;
-}
-
-/* =====================================================
-   Approach 4: Two Pointers (Index Tracking – Optimal ⭐)
-   -----------------------------------------------------
-   Idea:
-   - Pointer i tracks last unique element
-   - Pointer j scans array
-   - Overwrite when a new value is found
-
-   Time Complexity: O(n)
-   Space Complexity: O(1)
-   Most recommended interview solution
-   ===================================================== */
-
-function removeDuplicates(nums) {
-  if (nums.length === 0) return 0;
-
-  let i = 0;
-
-  for (let j = 1; j < nums.length; j++) {
-    if (nums[j] !== nums[i]) {
-      i++;
-      nums[i] = nums[j];
-    }
-  }
-
-  return i + 1;
 }
 
 /* =====================================================
